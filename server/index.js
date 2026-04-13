@@ -12,7 +12,12 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.send("AI Detector Backend Running 🚀");
 });
+app.post("/detect-image", (req, res) => {
+    // Fake detection logic
+    const score = Math.random();
 
+    res.json({ score });
+});
 // 🔥 AI Detection Route
 app.post("/detect-text", async (req, res) => {
     try {
