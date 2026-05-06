@@ -63,15 +63,15 @@ function App() {
       // 🔥 Heuristic logic
       let heuristicScore = 0;
 
-      if (code.includes("function")) heuristicScore += 0.2;
-      if (code.includes("return")) heuristicScore += 0.2;
-      if (code.includes("//")) heuristicScore += 0.2;
-      if (code.includes("const") || code.includes("let")) heuristicScore += 0.2;
+      if (url.includes("function")) heuristicScore += 0.2;
+      if (url.includes("return")) heuristicScore += 0.2;
+      if (url.includes("//")) heuristicScore += 0.2;
+      if (url.includes("const") || code.includes("let")) heuristicScore += 0.2;
 
       // Combine API + heuristic
       const finalScore = ((data.score || 0) + heuristicScore) / 2;
 
-      setCodeScore(finalScore);
+      setUrlScore(finalScore);
     } catch (error) {
       console.error(error);
       alert("Error checking URL");
@@ -251,8 +251,10 @@ function App() {
                     </div>
 
                     <p>
-                      {imageScore > 0.5
+                      {imageScore > 0.9
                         ? "⚠️ Likely AI-generated Image"
+                        : imageScore > 0.5
+                        ? "🤔 Uncertain"
                         : "✅ Likely Real Image"}
                     </p>
                   </div>
@@ -298,7 +300,7 @@ function App() {
                     </div>
 
                     <p>
-                      {urlScore > 0.7
+                      {urlScore > 0.5
                         ? "⚠️ Likely AI-generated"
                         : urlScore > 0.3
                         ? "🤔 Uncertain"
@@ -349,7 +351,7 @@ function App() {
                     <p>
                       {codeScore > 0.7
                         ? "⚠️ Likely AI-generated Code"
-                        : codeScore > 0.3
+                        : codeScore > 0.4
                         ? "🤔 Uncertain"
                         : "✅ Likely Human-written Code"}
                     </p>
@@ -359,7 +361,7 @@ function App() {
             )}
             {activeTab === "news" && (
               <>
-                <i><h2>📰 News Detection</h2></i>
+                <i><h2>News Detection</h2></i>
 
                 <input
                   type="text"

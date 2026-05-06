@@ -86,7 +86,32 @@ http://localhost:3000
 ```
 
 ---
+#### The Input Examples to check the working:
+URL Inputs:
+```
+https://www.bbc.com/news/world-asia-india-66286179    (HG)
+https://www.india.com    (UC)
+https://blog.hubspot.com    (AI)
+```
+Code Inputs:
+```
+func ad(a, b) {
+}   (HG)
 
+function add(a, b) {
+}    (UC)
+
+function add(a, b) {
+  return a + b; // returns sum
+}    (AI)
+```
+News Inputs:
+```
+https://www.bbc.com/news/world-asia-india-66286179    (HG)
+https://www.thehindu.com/news/national/   (UC)
+https://www.indiatoday.in/technology/news/story/ai-is-changing-the-future-of-work-2345678-2024-01-01   (AI)
+```
+---
 ## 🔄 How It Works
 
 1. User enters text or uploads an image
